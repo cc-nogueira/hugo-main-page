@@ -1,0 +1,26 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'John Doe'
+
+disableKinds = ["section", "taxonomy", "term", "RSS", "robotsTXT"]
+defaultContentLanguage = "en"
+theme = "main-page"
+
+[params]
+    copyright = "© John Doe"
+    description = "Personal Web Site"
+
+    favicon = "images/favicon.png"
+    images = ["images/cover-image.png"]
+    title = "John Doe"
+
+[params.contacts]
+    Github   = "johndoe"
+    LinkedIn = "johndoe"
+    Telegram = "johndoe"
+    Medium   = "johndoe"
+    Mail     = "john@doe.co"
+
+
+[params.meta]
+    keywords = "Personal, Hobby, Readings"
