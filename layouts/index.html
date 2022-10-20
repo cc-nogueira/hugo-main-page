@@ -2,7 +2,7 @@
 {{ $headless := .Site.GetPage "/homepage" }}
 {{ $sections := $headless.Resources.ByType "page" }}
 {{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
-<section class="flex items-center w-full h-full bg-no-repeat bg-center bg-slate-50" {{ with .Params.cover_image }}style="background-image: url({{ . }})"{{ end }}>
+<section class="flex items-center w-full h-screen bg-no-repeat bg-center bg-slate-50" {{ with .Params.cover_image }}style="background-image: url({{ . }})"{{ end }}>
     <div class="ml-8 max-w-2xl">
         {{ with .Params.header_headline }}<h1 class="mb-4 font-bold text-6xl tracking-tight text-slate-800">{{ . }}</h1>{{ end }}
         {{- partial "extra_headline.html" . -}}
