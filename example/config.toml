@@ -7,19 +7,21 @@ defaultContentLanguage = "en"
 theme = "main-page"
 
 [params]
-    copyright = "© John Doe"
-    description = "Personal Web Site"
-
-    favicon = "images/favicon.png"
-    images = ["images/cover-image.png"]
     title = "John Doe"
+    description = "Personal Web Site"
+    copyright = "© John Doe"
+
+    favicon = "img/favicon.png"
+    fonts = "css/fonts.css"
+    scrollsmooth = true
+
 
 [params.contacts]
     Github   = "johndoe"
     LinkedIn = "johndoe"
     Telegram = "johndoe"
     Medium   = "johndoe"
-    Mail     = "john@doe.co"
+    # Mail     = "john@doe.co"  
 
 
 [params.meta]

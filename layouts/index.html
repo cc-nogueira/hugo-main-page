@@ -1,0 +1,26 @@
+{{ define "content" }}
+{{ $headless := .Site.GetPage "/homepage" }}
+{{ $sections := $headless.Resources.ByType "page" }}
+{{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
+<section class="flex items-center w-full h-full bg-no-repeat bg-center bg-slate-50" {{ with .Params.cover_image }}style="background-image: url({{ . }})"{{ end }}>
+    <div class="ml-8 max-w-2xl">
+        {{ with .Params.header_headline }}<h1 class="mb-4 font-bold text-6xl tracking-tight text-slate-800">{{ . }}</h1>{{ end }}
+        {{- partial "extra_headline.html" . -}}
+
+        {{ range where $sections ".Params.headline_button" "eq" true }}
+            <a class="inline-block bg-blue-700 hover:bg-blue-900 px-6 py-2 rounded-md font-semibold text-white no-underline tracking-wide" href='#{{ anchorize .Title }}'>
+                {{ with .Params.svg_icon_path }}
+                    <svg class="inline fill-white h-5 pb-1 pr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="{{ . }}"/></svg>
+                {{ end }}
+                {{ .Title }}
+            </a>
+        {{ end }}
+
+        {{- partial "contacts.html" . -}}
+    </div>  
+</section>
+<section>
+    <div style="height: 200px;"></div>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+</section>
+{{ end }}

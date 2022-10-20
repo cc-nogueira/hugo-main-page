@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ if .Site.Params.scrollsmooth }}scroll-smooth{{ end }} {{ if .Params.cover }}h-full max-h-full overflow-x-hidden{{ end }}">
     {{- partial "head.html" . -}}
-    <body>
+    <body class="{{ if .Params.cover_image }}h-full max-h-full{{ end }} font-body text-base">
         {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
+        {{- block "content" . }}{{- end }}
         {{- partial "footer.html" . -}}
+        {{- partial "extra_body.html" . -}}
     </body>
 </html>

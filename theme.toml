@@ -2,11 +2,14 @@
 # See https://github.com/gohugoio/hugoThemesSiteBuilder for an example
 
 name = "Main Page"
+description = "Clean theme for Single-Page sites or sites with a Main Page."
+
 license = "MIT"
 licenselink = "https://github.com/cc-nogueira/hugo-main-page/blob/master/LICENSE"
-description = "Clean theme for Single-Page sites or sites with a Main Page."
+
 homepage = "https://github.com/cc-nogueira/hugo-main-page"
 demosite = "https://main-page.hash-bang.dev"
+
 tags = [
   "clean",
   "landing",
@@ -15,16 +18,8 @@ tags = [
   "personal",
   "responsive"
 ]
-
 features = []
-min_version = "0.41.0"
 
 [author]
   name = "Ricardo Nogueira"
   homepage = "https://ricardo.nogueira.cc"
-
-# If porting an existing theme
-[original]
-  name = "Hugo Scroll"
-  homepage = "https://github.com/janraasch/hugo-scroll"
-  repo = "https://github.com/janraasch/hugo-scroll"
