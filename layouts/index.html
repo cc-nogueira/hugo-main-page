@@ -1,26 +1,60 @@
 {{ define "content" }}
-{{ $headless := .Site.GetPage "/homepage" }}
-{{ $sections := $headless.Resources.ByType "page" }}
-{{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
-<section class="flex items-center w-full h-screen bg-no-repeat bg-center bg-slate-50" {{ with .Params.cover_image }}style="background-image: url({{ . }})"{{ end }}>
-    <div class="ml-8 max-w-2xl">
-        {{ with .Params.header_headline }}<h1 class="mb-4 font-bold text-6xl tracking-tight text-slate-800">{{ . }}</h1>{{ end }}
-        {{- partial "extra_headline.html" . -}}
+  {{ $headless := .Site.GetPage "/homepage" }}
+  {{ $sections := $headless.Resources.ByType "page" }}
+  {{ $sections := cond .Site.BuildDrafts $sections (where $sections "Draft" "==" false) }}
+  {{ $buttonSections := where $sections "Params.headline_button" true }}
+  <section
+    class="flex h-screen w-full items-center bg-slate-50 bg-center bg-no-repeat px-12"
+    {{ with .Params.cover_image }}
+      style="background-image: url({{ . }})"
+    {{ end }}
+  >
+    <div class="max-w-2xl">
+      {{ with .Params.header_headline }}
+        <h1 class="mb-4 text-6xl font-bold tracking-tight text-slate-800">
+          {{ . }}
+        </h1>
+      {{ end }}
 
-        {{ range where $sections ".Params.headline_button" "eq" true }}
-            <a class="inline-block bg-blue-700 hover:bg-blue-900 px-6 py-2 rounded-md font-semibold text-white no-underline tracking-wide" href='#{{ anchorize .Title }}'>
-                {{ with .Params.svg_icon_path }}
-                    <svg class="inline fill-white h-5 pb-1 pr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="{{ . }}"/></svg>
-                {{ end }}
-                {{ .Title }}
+      {{- partial "extra_headline.html" . -}}
+
+      {{ if $buttonSections }}
+        <div class="mt-20">
+          {{ range $buttonSections }}
+            <a
+              class="inline-block rounded-md bg-blue-700 px-6 py-2 font-semibold tracking-wide text-white no-underline hover:bg-blue-900"
+              href="#{{ anchorize .Title }}"
+            >
+              {{ with .Params.svg_icon }}
+                {{ partial "svg.html" (dict "icon" . "class" "inline h-5 fill-white pb-1 pr-2") }}
+              {{ end }}
+              {{ .Title }}
             </a>
-        {{ end }}
+          {{ end }}
+        </div>
+      {{ end }}
 
+      {{- partial "contacts.html" . -}}
+    </div>
+  </section>
+
+  {{ range $sections }}
+    <section class="{{ if not (.Params.subsection) }}pt-20{{ end }} mb-8 overflow-hidden px-12">
+      <div id="{{ anchorize .Title }}" class="mx-auto max-w-7xl pt-4">
+        <h3
+          class="{{ if (.Params.subsection) }}
+            text-2xl mb-4
+          {{ else }}
+            text-3xl mb-8
+          {{ end }} font-semibold text-slate-800"
+        >
+          {{ .Title }}
+        </h3>
+        {{ .Content }}
+      </div>
+      {{ if .Params.show_contacts }}
         {{- partial "contacts.html" . -}}
-    </div>  
-</section>
-<section>
-    <div style="height: 200px;"></div>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-</section>
+      {{ end }}
+    </section>
+  {{ end }}
 {{ end }}

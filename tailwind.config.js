@@ -2,11 +2,10 @@
 module.exports = {
   content: ["content/**/*.md", "layouts/**/*.html"],
   theme: {
-    extend: {
-      fontFamily: {
-        'body': ['Nunito', '"Open Sans"', 'sans-serif']
-      }
-    }
+    fontFamily: {
+      sans: ['"Open Sans"', "sans-serif"],
+    },
+    extend: {},
   },
-  plugins: []
-}
+  plugins: [],
+};

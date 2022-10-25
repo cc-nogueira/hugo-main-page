@@ -1,18 +1,18 @@
 <head>
-    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+  <title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 
-    <!-- Alpine JS -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Alpine JS -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Tailwind CSS output -->
-    <link rel="stylesheet" href="{{ "css/style.css" | absURL }}" >
+  <!-- Tailwind CSS output -->
+  <link rel="stylesheet" href="{{ "css/style.css" | absURL }}" />
 
-    {{ with .Params.fonts }}
-    <link rel="stylesheet" href="{{ . | absURL }}">
-    {{ end }}
+  {{ with .Params.fonts }}
+    <link rel="stylesheet" href="{{ . | absURL }}" />
+  {{ end }}
 
-    {{- partial "extra_head.html" . -}}
+  {{- partial "extra_head.html" . -}}
 </head>

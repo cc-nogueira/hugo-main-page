@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html class="{{ if .Site.Params.scrollsmooth }}scroll-smooth{{ end }} {{ if .Params.cover }}h-full max-h-full overflow-x-hidden{{ end }}">
-    {{- partial "head.html" . -}}
-    <body class="{{ if .Params.cover_image }}h-full max-h-full{{ end }} font-body text-base">
-        {{- partial "header.html" . -}}
-        {{- block "content" . }}{{- end }}
-        {{- partial "footer.html" . -}}
-        {{- partial "extra_body.html" . -}}
-    </body>
+<html
+  class="{{ if .Site.Params.scrollsmooth }}scroll-smooth{{ end }} {{ if .Params.cover }}
+    h-full max-h-full overflow-x-hidden
+  {{ end }}"
+>
+  {{- partial "head.html" . -}}
+  <body class="text-base{{ if .Params.cover_image }}h-full max-h-full{{ end }} font-sans">
+    {{- partial "header.html" . -}}
+    {{- block "content" . }}{{- end }}
+    {{- partial "footer.html" . -}}
+    {{- partial "extra_body.html" . -}}
+  </body>
 </html>
